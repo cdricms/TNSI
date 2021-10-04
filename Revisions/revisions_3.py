@@ -18,17 +18,18 @@ assert plus_fort(perso_c, perso_d) == 'Claude'
 
 
 # 3
-victories = []
 
 
-def conv_dict(victories: list)
+def conv_dict(victories: list):
+    victories = sorted(victories)
+    dic = {}
+    dic[f"{[name for name in victories if name not in dic.keys()]"]
+
+    print(dic)
+
+    return dic
 
 
-dic = {}
-for name in victories:
-     if name.keys()
-      count = 0
-       for victory in victories:
-            if name == victory:
-                count += 1
-        dic[f"{name}"] = count
+liste_vic = ['Cléa', 'Cléa', 'Aïcha', 'Dounia']
+
+print(conv_dict(liste_vic))
