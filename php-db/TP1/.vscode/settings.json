@@ -1,0 +1,11 @@
+{
+  "sqltools.connections": [
+    {
+      "previewLimit": 50,
+      "driver": "SQLite",
+      "name": "livres",
+      "database": "/home/ubuntu/Documents/TNSI/Les Bases de Données/Les bases de données et le langage Python/bdd_python/project-5/livres.db"
+    }
+  ],
+  "sqltools.useNodeRuntime": true
+}
