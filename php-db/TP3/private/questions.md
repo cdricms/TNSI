@@ -37,3 +37,23 @@ Il récupère le tuple où se trouve le curseur SQL.
 Il ferme le curseur de la table, donc nous n'avons plus accès à ses données.
 
 # 9
+
+# 13
+
+C'est une clé étrangère
+
+# 14
+
+Elle fait référence à la clé primaire de la table land.
+
+# 15
+
+De joindre 2 tables en fonction d'une clé étrangère et primaire
+
+# 16
+
+# 17
+
+c'est le point de jointure entre les deux tables.
+
+# 18
