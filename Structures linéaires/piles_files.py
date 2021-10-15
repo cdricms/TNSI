@@ -24,7 +24,10 @@ def stack_top(stack: list):
     >>> print(stack_top([]))
     None
     """
-    return stack[-1]
+    if stack_len(stack) > 0:
+        return stack[-1]
+
+    return None
 
 
 def stack_push(stack: list, el):
@@ -52,7 +55,10 @@ def stack_pop(stack: list):
     >>> print(stack_pop([]))
     None
     """
-    return stack.pop()
+    if stack_len(stack) > 0:
+        return stack.pop()
+
+    return None
 
 
 def stack_len(stack: list):
@@ -80,3 +86,5 @@ def main():
 
 if __name__ == "__main__":
     main()
+    import doctest
+    doctest.testmod()
