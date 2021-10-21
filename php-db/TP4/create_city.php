@@ -31,22 +31,25 @@
           <label for="city_land">Pays : </label>
           <select name="city_land" required>
           <?php
-            $sql = "SELECT * FROM land";
+            $sql = 'SELECT * FROM land LEFT JOIN continent ON land.continent_id = continent.continent_id';
             $datas = $db->query($sql);
             while($row=$datas->fetch()) {
-              echo '<option value='.$row['land_id'].'>'.$row['land_name'].'</option>';
+              $func = sprintf("getContinent('%s', %d)", $row['continent_name'], $row['continent_id']);
+              echo $func;
+
+              echo '<option onclick="'.$func.'" value='.$row['land_id'].'>'.$row['land_name'].'</option>';
             }
             $datas->closeCursor();
           ?>
           </select>
           <br />
           <label for="city_continent">Continent : </label>
-          <select name="city_continent" width="10" required>
+          <select id="continent" name="city_continent" width="10" required>
           <?php
             $sql = "SELECT * FROM continent";
             $datas = $db->query($sql);
             while($row=$datas->fetch()) {
-              echo '<option value='.$row['continent_id'].'>'.$row['continent_name'].'</option>';
+              echo '<option class="continents" value='.$row['continent_id'].'>'.$row['continent_name'].'</option>';
             }
             $datas->closeCursor();
           ?>
@@ -89,5 +92,20 @@
         echo'</section>';
       }
       ?>
+      <script>
+        function getContinent(continentName, id) {
+          console.log(continentName, id)
+          const continentsSel = document.getElementById("continent");
+          while (continentsSel.firstChild) {
+            continentsSel.removeChild(continentsSel.lastChild)
+          }
+          const newoption = document.createElement("option")
+          newoption.setAttribute("value", `${id}`)
+          newoption.innerText = continentName;
+
+          continentsSel.appendChild(newoption)
+
+        }
+      </script>
     </body>
 </html>

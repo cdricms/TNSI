@@ -56,9 +56,13 @@
          echo '</form>';
       } else if (isset($_GET['city_to_update'])) {
         // Section de confirmation de la suppresion de la ville
-        $city = $_GET['city_to_update'];
-        $population = $_GET['city_population'];
-        $urban_area = $_GET['city_urban_area'];
+        $city = htmlspecialchars($_GET['city_to_update']);
+        $population = htmlspecialchars($_GET['city_population']);
+        $urban_area = htmlspecialchars($_GET['city_urban_area']);
+
+        $sql = "UPDATE city SET city_population=$population, city_urban_area=$urban_area WHERE city_id=$city";
+        $datas = $db->exec($sql);
+
         echo'<section>';
           echo "La population de la ville a bien été modifiée";
         echo'</section>';
