@@ -6,5 +6,4 @@ def pow(a: int, n: int):
     return a * pow(a, n-1)
 
 
-print(pow(2, 3))
-print(pow(6, 3))
+print(pow(2, 5000))
