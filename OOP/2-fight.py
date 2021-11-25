@@ -16,6 +16,7 @@ class Character:
         strike = self.weapon.hit()
         # Détermination des dégâts évités par le défenseur
         protect = target.weapon.parade()
+        strike += self.magic_scroll.read_scroll()
         # Calcul des dégâts finalement reçus
         wound = strike - protect
         wound = max(0, wound)
@@ -30,13 +31,10 @@ class Character:
             print(target.name, "reçoit", wound, "pts de dégât.")
         print(target.name, "a encore", target.life, "pts de vie.")
 
+    def read_scroll(self):
+        return self.magic_scroll.read_scroll()
+
     def healing(self):
-        # Détermination des points de vie récupérés
-        cure = self.magic_scroll.read_scroll()
-        # Mise-à-jour des points de vie
-        self.life += cure
-        # Textes descriptifs dans la console
-        print(self.name, "se soigne et récupère", cure, "points de vie.")
 
     def description(self):
         print(
@@ -76,6 +74,29 @@ class Magic_Scroll:
     def read_scroll(self):
         effect = randint(1, self.power)
         return effect
+
+
+class Healer(Magic_Scroll):
+    def power(self, **kwargs):
+        cure = self.read_scroll()
+        # Mise-à-jour des points de vie
+        owner = kwargs.get("owner")
+        owner.life += cure
+        # Textes descriptifs dans la console
+        print(owner.name, "se soigne et récupère", cure, "points de vie.")
+
+
+class FireBall(Magic_Scroll):
+    def power(self, **kwargs):
+        target = kwargs.get("target")
+        owner = kwargs.get("owner")
+
+        protect = target.weapon.parade()
+        owner.
+
+
+class LifeSteal(Magic_Scroll):
+    pass
 
 
 """
